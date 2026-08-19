@@ -69,7 +69,7 @@ nav a:hover {
 ========================= */
 
 .hero {
-    background: #eef3f8;
+    background: #ffffff;
     padding: 110px 0;
     border-bottom: 1px solid #dce5ee;
 }
@@ -77,10 +77,26 @@ nav a:hover {
 .hero-content {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 60px;
 }
 
 .hero-text {
-    max-width: 760px;
+    flex: 1;
+    max-width: 680px;
+}
+
+.hero-photo {
+    flex-shrink: 0;
+}
+
+.hero-photo img {
+    width: 300px;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #dce5ee;
+    box-shadow: 0 15px 35px rgba(11, 31, 58, 0.12);
 }
 
 .small-title {
@@ -384,4 +400,88 @@ footer {
     .section-title h2 {
         font-size: 30px;
     }
+}
+
+/* =========================
+   CONTINUOUS IMAGE CAROUSEL
+========================= */
+
+.image-carousel-section {
+    padding: 90px 0;
+    background: #f5f7fa;
+    overflow: hidden;
+}
+
+.carousel-wrapper {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 45px;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+
+    animation: slideLeft 35s linear infinite;
+}
+
+.carousel-item {
+    width: 500px;
+    height: 300px;
+    flex-shrink: 0;
+
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+
+    box-shadow: 0 12px 30px rgba(11, 31, 58, 0.12);
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+
+/* Move images from RIGHT to LEFT */
+
+@keyframes slideLeft {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(-50% - 15px));
+    }
+
+}
+
+
+/* Pause when mouse is over the images */
+
+.carousel-wrapper:hover .carousel-track {
+    animation-play-state: paused;
+}
+
+
+/* =========================
+   CAROUSEL MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    .carousel-item {
+        width: 320px;
+        height: 240px;
+    }
+
+    .carousel-track {
+        gap: 20px;
+        animation-duration: 28s;
+    }
+
 }
